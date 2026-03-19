@@ -1,5 +1,6 @@
 # GazePause
-Pauses and resumes any video by pressing spacebar when you look away or back at the screen, using webcam gaze detection
+
+Pauses and resumes any video by pressing spacebar (or clicking) when you look away or back at the screen, using webcam gaze detection.
 
 Works with any video player, any website (YouTube, Netflix, etc.), or any app — because it sends a real keypress or click to whatever window is in focus.
 
@@ -7,13 +8,15 @@ Works with any video player, any website (YouTube, Netflix, etc.), or any app �
 
 ## Requirements
 
-- Windows 10/11
+- Windows 10/11 or macOS 12+
 - Python 3.8+
 - A webcam
 
 ---
 
 ## Installation
+
+### Windows
 
 **Step 1 — Install Python**
 
@@ -28,15 +31,49 @@ Open PowerShell and run:
 pip install opencv-python mediapipe pyautogui Pillow
 ```
 
----
-
-## Running
+**Step 3 — Run**
 
 ```powershell
 python "C:\path\to\gazepause.py"
 ```
 
-Then click **Start** in the window to begin gaze detection.
+---
+
+### macOS
+
+**Step 1 — Install Python**
+
+Download from https://python.org/downloads and run the installer, or use Homebrew:
+
+```bash
+brew install python
+```
+
+**Step 2 — Install dependencies**
+
+Open Terminal and run:
+
+```bash
+pip3 install opencv-python mediapipe pyautogui Pillow
+```
+
+**Step 3 — Grant Accessibility permission (required for spacebar to work)**
+
+Before running, you need to give Terminal permission to control your computer:
+
+1. Open **System Settings** → **Privacy & Security** → **Accessibility**
+2. Click the **+** button and add your terminal app (Terminal, iTerm2, or VS Code)
+3. Make sure the toggle next to it is turned **on**
+
+Without this step the script will run but spacebar won't fire.
+
+**Step 4 — Run**
+
+```bash
+python3 /path/to/gazepause.py
+```
+
+> Note: On macOS always use `python3` instead of `python`
 
 ---
 
@@ -51,6 +88,8 @@ Then click **Start** in the window to begin gaze detection.
 
 ## Settings
 
+Edit these at the top of `gazepause.py` in any text editor:
+
 | Setting | Default | What it does |
 |---|---|---|
 | `PAUSE_DELAY_SEC` | 1.5 | Seconds looking away before action fires |
@@ -58,8 +97,6 @@ Then click **Start** in the window to begin gaze detection.
 | `YAW_THRESHOLD` | 14.0 | Degrees of left/right head turn before "away" |
 | `PITCH_THRESHOLD` | 14.0 | Degrees of up/down head tilt before "away" |
 | `CAMERA_INDEX` | 0 | Which camera to use (try 1 or 2 if wrong one opens) |
-
-These are at the top of `gazepause.py` and can be edited in any text editor.
 
 ---
 
@@ -91,8 +128,11 @@ Move your mouse to the **top-left corner** of your screen to immediately kill th
 
 ## Troubleshooting
 
-**Window opens but is too small / buttons missing**
-Your display scaling may be affecting the layout. Go to Windows Settings → Display → Scale and check what it's set to.
+**Window opens but is too small / buttons missing** (Windows)
+Your display scaling may be affecting the layout. Go to Windows Settings → Display → Scale and note what it's set to.
+
+**Spacebar not working** (macOS)
+Make sure Terminal has Accessibility permission — see Step 3 in the macOS setup above.
 
 **Wrong camera opens**
 Change `CAMERA_INDEX = 0` to `1` or `2` at the top of the script.
