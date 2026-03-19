@@ -1,3 +1,9 @@
+Ever get distracted during a video, and wish it would pause at the exact spot you stopped paying attention? Well here's a solution!
+
+<img width="220" height="1750" alt="image" src="https://github.com/user-attachments/assets/989386ab-fe4e-4a70-a287-9e8ac9c69054" />
+
+
+
 # GazePause
 
 Pauses and resumes any video by pressing spacebar (or clicking) when you look away or back at the screen, using webcam gaze detection.
